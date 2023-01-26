@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EredmenyController;
+use App\Http\Controllers\PilotaController;
+use App\Http\Controllers\VersenyController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::resource('eredmeny', EredmenyController::class);
+Route::resource('verseny', VersenyController::class);
+Route::resource('pilota', PilotaController::class)->only([
+    'index', 'show'
+]);;

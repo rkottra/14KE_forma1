@@ -15,7 +15,10 @@ class EredmenyController extends Controller
      */
     public function index()
     {
-        return Eredmeny::with('pilota')->with('verseny')->get();
+        $eredmeny = Eredmeny::select('futott', 'pilotaId', 'versenyId');
+        $pilotaval = $eredmeny->with('pilota:id,nev,rovidnev');
+        $versennyel = $eredmeny->with('verseny:id,hossz,kor');
+        return $versennyel->get();
     }
 
     /**

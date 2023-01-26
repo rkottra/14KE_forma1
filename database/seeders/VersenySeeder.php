@@ -22,9 +22,21 @@ class VersenySeeder extends Seeder
 
 
         $model = new Verseny();
-        $model->nev = 'Hungaroring';
+        $model->nev = 'Hungarian GP';
         $model->hossz = 110;
         $model->kor = 70;
+        $model->save();
+
+        $model = new Verseny();
+        $model->nev = 'Austrian Grand Prix';
+        $model->hossz = 100;
+        $model->kor = 55;
+        $model->save();
+
+        $model = new Verseny();
+        $model->nev = 'German GP';
+        $model->hossz = 123;
+        $model->kor = 67;
         $model->save();
     }
 }

@@ -15,7 +15,13 @@ class PilotaController extends Controller
      */
     public function index()
     {
-        //
+        return Pilota::select('id', 'nev', 'rovidnev')
+          ->with(['eredmenyek' => function ($query) {
+            $query->select('pilotaId', 'futott', 'versenyId')
+                  ->with(['verseny' => function ($query2) {
+                        $query2->select('id', 'nev', 'kor', 'hossz');
+                    }]);
+        }])->get();
     }
 
     /**

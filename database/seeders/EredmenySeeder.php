@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Eredmeny;
+
 
 class EredmenySeeder extends Seeder
 {
@@ -14,6 +16,6 @@ class EredmenySeeder extends Seeder
      */
     public function run()
     {
-        
+        Eredmeny::factory()->count(200)->create();
     }
 }

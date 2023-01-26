@@ -11,6 +11,8 @@ class Pilota extends Model
     use HasFactory;
     public $table = "pilotak";
 
+    protected $fillable = ['nev', 'rovidnev'];
+
     public function eredmenyek()
     {
         return $this->hasMany(Eredmeny::class, 'pilotaId');

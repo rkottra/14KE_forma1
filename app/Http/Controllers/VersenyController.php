@@ -15,7 +15,7 @@ class VersenyController extends Controller
      */
     public function index()
     {
-        //
+        return Verseny::with('eredmenyek')->get();
     }
 
     /**
