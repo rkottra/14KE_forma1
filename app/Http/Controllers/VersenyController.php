@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Verseny;
+use App\Models\Eredmeny;
 use App\Http\Requests\StoreVersenyRequest;
 use App\Http\Requests\UpdateVersenyRequest;
+use Illuminate\Support\Facades\DB;
+
 
 class VersenyController extends Controller
 {
@@ -81,6 +84,13 @@ class VersenyController extends Controller
      */
     public function destroy(Verseny $verseny)
     {
-        //
+        try {
+            DB::beginTransaction();
+            Eredmeny::where("versenyId", $verseny->id)->delete();
+            $verseny->delete();
+            DB::commit();
+        } catch(Exception $e)  {
+            DB::rollBack();
+        }
     }
 }
